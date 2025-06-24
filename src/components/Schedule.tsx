@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 
 const Schedule = () => {
@@ -40,6 +39,12 @@ const Schedule = () => {
       { time: '9:00 AM', class: 'Gentle Flow', instructor: 'Sarah', duration: '60 min', level: 'Beginner' },
       { time: '5:00 PM', class: 'Sunset Yoga', instructor: 'Sarah', duration: '60 min', level: 'All Levels' },
     ],
+  };
+
+  const handleBookNow = (classItem: any) => {
+    // Replace this URL with your actual Google Form URL
+    const googleFormUrl = "https://forms.gle/your-google-form-id";
+    window.open(googleFormUrl, '_blank');
   };
 
   return (
@@ -105,7 +110,10 @@ const Schedule = () => {
                   </div>
                   
                   <div className="mt-4 md:mt-0">
-                    <button className="bg-sage-400 hover:bg-sage-500 text-white px-6 py-2 rounded-full transition-all duration-300 hover:scale-105">
+                    <button 
+                      onClick={() => handleBookNow(classItem)}
+                      className="bg-sage-400 hover:bg-sage-500 text-white px-6 py-2 rounded-full transition-all duration-300 hover:scale-105"
+                    >
                       Book Now
                     </button>
                   </div>
