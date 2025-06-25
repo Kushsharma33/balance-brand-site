@@ -8,12 +8,8 @@ interface Message {
   isUser: boolean;
   timestamp: Date;
   buttons?: string[];
-}
-
-interface UserInfo {
-  countryCode: string;
-  phone: string;
-  name: string;
+  socialLinks?: boolean;
+  bookingConfirmation?: boolean;
 }
 
 const Chatbot = () => {
@@ -21,20 +17,15 @@ const Chatbot = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
-      text: "🌿 Namaste! I'm Sis Kush — your personal yoga assistant.\nLet's get started 🌞 How would you like to proceed?",
+      text: "🌿 Namaste, welcome to our peaceful space!\nI'm Kush — here to guide you on your yoga journey. How would you like to start?",
       isUser: false,
       timestamp: new Date(),
-      buttons: ["Share My Info", "Learn About Yoga Services", "Connect on WhatsApp/Messenger/WeChat"]
+      socialLinks: true
     }
   ]);
   const [inputText, setInputText] = useState('');
-  const [currentFlow, setCurrentFlow] = useState<string>('main');
-  const [userInfo, setUserInfo] = useState<UserInfo>({ countryCode: '', phone: '', name: '' });
-  const [showInput, setShowInput] = useState(false);
-  const [inputType, setInputType] = useState<'phone' | 'name' | null>(null);
 
   const handleButtonClick = (buttonText: string) => {
-    // Add user message
     const userMessage: Message = {
       id: messages.length + 1,
       text: buttonText,
@@ -44,103 +35,27 @@ const Chatbot = () => {
 
     let botResponse: Message | null = null;
 
-    if (currentFlow === 'main') {
-      if (buttonText === "Share My Info") {
-        setCurrentFlow('contact-country');
-        botResponse = {
-          id: messages.length + 2,
-          text: "Please select your country code:",
-          isUser: false,
-          timestamp: new Date(),
-          buttons: ["+91", "+1", "+44", "Other"]
-        };
-      } else if (buttonText === "Learn About Yoga Services") {
-        setCurrentFlow('services');
-        botResponse = {
-          id: messages.length + 2,
-          text: "🧘 What would you like to explore?",
-          isUser: false,
-          timestamp: new Date(),
-          buttons: ["Yoga for Beginners", "Weight Loss Yoga", "Back Pain Relief Yoga", "Online Yoga Sessions", "Timings & Pricing"]
-        };
-      } else if (buttonText === "Connect on WhatsApp/Messenger/WeChat") {
-        setCurrentFlow('connect');
-        botResponse = {
-          id: messages.length + 2,
-          text: "📲 You can reach us directly here:\n\n• WhatsApp: https://wa.me/9717303190\n• Messenger: https://m.me/YOUR_PAGE\n• WeChat ID: your_wechat_id\n\nFeel free to chat there for faster help 🌟",
-          isUser: false,
-          timestamp: new Date(),
-          buttons: ["Back to Main Menu"]
-        };
-      }
-    } else if (currentFlow === 'contact-country') {
-      setUserInfo(prev => ({ ...prev, countryCode: buttonText }));
-      setCurrentFlow('contact-phone');
-      setShowInput(true);
-      setInputType('phone');
-      botResponse = {
-        id: messages.length + 2,
-        text: "Please enter your phone number:",
-        isUser: false,
-        timestamp: new Date()
-      };
-    } else if (currentFlow === 'services') {
-      setCurrentFlow('main');
-      let serviceResponse = "";
-      
-      switch (buttonText) {
-        case "Yoga for Beginners":
-          serviceResponse = "Perfect choice! Beginner yoga mai hum basic poses aur breathing techniques sikhate hain. Step by step progress karte hain, bilkul gentle approach.";
-          break;
-        case "Weight Loss Yoga":
-          serviceResponse = "Excellent! Weight loss yoga combines dynamic flows with cardio elements. Fat burn karne ke saath flexibility bhi improve hoti hai!";
-          break;
-        case "Back Pain Relief Yoga":
-          serviceResponse = "Great choice! Back pain relief yoga focuses on gentle stretches and breathing to release pressure. We offer online + offline options too.";
-          break;
-        case "Online Yoga Sessions":
-          serviceResponse = "Wonderful! Online sessions ki convenience with live interaction. Ghar baithe personalized guidance milti hai with flexible timings.";
-          break;
-        case "Timings & Pricing":
-          serviceResponse = "Perfect! We have morning (6-8 AM) and evening (6-8 PM) slots. Pricing starts from ₹1500/month. Package deals bhi available hain!";
-          break;
-        default:
-          serviceResponse = "Thanks for your interest! How else can I help you today?";
-      }
+    if (buttonText === "Book Now") {
+      // Open Google Form in new tab
+      window.open('https://forms.gle/YOUR_GOOGLE_FORM_LINK', '_blank');
       
       botResponse = {
         id: messages.length + 2,
-        text: serviceResponse,
+        text: "🌟 Thank you for registering! You can now follow Ankit Sharma and stay connected:",
         isUser: false,
         timestamp: new Date(),
-        buttons: ["Learn More Services", "Share My Info", "Back to Main Menu"]
+        bookingConfirmation: true
       };
-    } else if (currentFlow === 'connect') {
-      if (buttonText === "Back to Main Menu") {
-        setCurrentFlow('main');
-        botResponse = {
-          id: messages.length + 2,
-          text: "🌿 How would you like to proceed?",
-          isUser: false,
-          timestamp: new Date(),
-          buttons: ["Share My Info", "Learn About Yoga Services", "Connect on WhatsApp/Messenger/WeChat"]
-        };
-      }
-    }
-
-    // Handle "Back to Main Menu" and "Learn More Services" from any flow
-    if (buttonText === "Back to Main Menu" || buttonText === "Learn More Services") {
-      setCurrentFlow('main');
+    } else if (buttonText === "Back to Main") {
       botResponse = {
         id: messages.length + 2,
-        text: "🌿 How would you like to proceed?",
+        text: "🌿 How would you like to start?",
         isUser: false,
         timestamp: new Date(),
-        buttons: ["Share My Info", "Learn About Yoga Services", "Connect on WhatsApp/Messenger/WeChat"]
+        socialLinks: true
       };
     }
 
-    // Only add messages if botResponse is not null
     if (botResponse) {
       setMessages(prev => [...prev, userMessage, botResponse]);
     } else {
@@ -148,54 +63,30 @@ const Chatbot = () => {
     }
   };
 
-  const handleInputSubmit = () => {
-    if (!inputText.trim()) return;
-
+  const handleSocialClick = (platform: string, url: string) => {
+    window.open(url, '_blank');
+    
     const userMessage: Message = {
       id: messages.length + 1,
-      text: inputText,
+      text: `Connected via ${platform}`,
       isUser: true,
       timestamp: new Date()
     };
 
-    let botResponse: Message | null = null;
+    const botResponse: Message = {
+      id: messages.length + 2,
+      text: "🙏 Perfect! Feel free to message me there anytime. Anything else I can help you with?",
+      isUser: false,
+      timestamp: new Date(),
+      buttons: ["Book Now", "Back to Main"]
+    };
 
-    if (currentFlow === 'contact-phone' && inputType === 'phone') {
-      setUserInfo(prev => ({ ...prev, phone: inputText }));
-      setCurrentFlow('contact-name');
-      setInputType('name');
-      botResponse = {
-        id: messages.length + 2,
-        text: "Please enter your full name:",
-        isUser: false,
-        timestamp: new Date()
-      };
-    } else if (currentFlow === 'contact-name' && inputType === 'name') {
-      setUserInfo(prev => ({ ...prev, name: inputText }));
-      setCurrentFlow('main');
-      setShowInput(false);
-      setInputType(null);
-      botResponse = {
-        id: messages.length + 2,
-        text: `Thank you ${inputText}! 🙏 Your details have been saved. Our team will connect with you soon.\n\nHow else can I help you today?`,
-        isUser: false,
-        timestamp: new Date(),
-        buttons: ["Learn About Yoga Services", "Connect on WhatsApp/Messenger/WeChat"]
-      };
-    }
-
-    // Only add messages if botResponse is not null
-    if (botResponse) {
-      setMessages(prev => [...prev, userMessage, botResponse]);
-    } else {
-      setMessages(prev => [...prev, userMessage]);
-    }
-    setInputText('');
+    setMessages(prev => [...prev, userMessage, botResponse]);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
-      handleInputSubmit();
+      // Handle any text input if needed
     }
   };
 
@@ -221,7 +112,7 @@ const Chatbot = () => {
                 K
               </div>
               <div>
-                <h3 className="font-medium">Sis Kush</h3>
+                <h3 className="font-medium">Kush</h3>
                 <p className="text-xs opacity-90">Yoga Assistant</p>
               </div>
             </div>
@@ -251,7 +142,72 @@ const Chatbot = () => {
                   </div>
                 </div>
                 
-                {/* Buttons */}
+                {/* Social Media Links */}
+                {message.socialLinks && !message.isUser && (
+                  <div className="flex flex-col space-y-2">
+                    <p className="text-xs text-sage-600 text-center">📲 Connect directly with me here:</p>
+                    <div className="flex justify-center space-x-4">
+                      <button
+                        onClick={() => handleSocialClick('WhatsApp', 'https://wa.me/9717303190')}
+                        className="w-10 h-10 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center text-white transition-colors"
+                        title="WhatsApp"
+                      >
+                        <span className="text-lg">💬</span>
+                      </button>
+                      <button
+                        onClick={() => handleSocialClick('Messenger', 'https://m.me/YOUR_PAGE')}
+                        className="w-10 h-10 bg-blue-600 hover:bg-blue-700 rounded-full flex items-center justify-center text-white transition-colors"
+                        title="Messenger"
+                      >
+                        <span className="text-lg">📧</span>
+                      </button>
+                      <button
+                        onClick={() => handleSocialClick('WeChat', 'YOUR_WECHAT_LINK')}
+                        className="w-10 h-10 bg-green-600 hover:bg-green-700 rounded-full flex items-center justify-center text-white transition-colors"
+                        title="WeChat"
+                      >
+                        <span className="text-lg">💭</span>
+                      </button>
+                    </div>
+                    <div className="flex justify-center mt-3">
+                      <button
+                        onClick={() => handleButtonClick('Book Now')}
+                        className="bg-sage-400 hover:bg-sage-500 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors"
+                      >
+                        ✨ Book Now
+                      </button>
+                    </div>
+                  </div>
+                )}
+
+                {/* Booking Confirmation Links */}
+                {message.bookingConfirmation && !message.isUser && (
+                  <div className="flex justify-center space-x-4 mt-2">
+                    <button
+                      onClick={() => window.open('https://www.instagram.com/ankitsharmaofficial', '_blank')}
+                      className="w-10 h-10 bg-pink-500 hover:bg-pink-600 rounded-full flex items-center justify-center text-white transition-colors"
+                      title="Instagram"
+                    >
+                      <span className="text-lg">📸</span>
+                    </button>
+                    <button
+                      onClick={() => window.open('https://www.linkedin.com/in/ankitsharmaofficial', '_blank')}
+                      className="w-10 h-10 bg-blue-700 hover:bg-blue-800 rounded-full flex items-center justify-center text-white transition-colors"
+                      title="LinkedIn"
+                    >
+                      <span className="text-lg">💼</span>
+                    </button>
+                    <button
+                      onClick={() => window.open('https://www.youtube.com/@ankitsharmaofficial', '_blank')}
+                      className="w-10 h-10 bg-red-600 hover:bg-red-700 rounded-full flex items-center justify-center text-white transition-colors"
+                      title="YouTube"
+                    >
+                      <span className="text-lg">📺</span>
+                    </button>
+                  </div>
+                )}
+                
+                {/* Regular Buttons */}
                 {message.buttons && !message.isUser && (
                   <div className="flex flex-col space-y-1">
                     {message.buttons.map((button, index) => (
@@ -268,28 +224,6 @@ const Chatbot = () => {
               </div>
             ))}
           </div>
-
-          {/* Input */}
-          {showInput && (
-            <div className="p-4 border-t border-sage-100">
-              <div className="flex space-x-2">
-                <input
-                  type="text"
-                  value={inputText}
-                  onChange={(e) => setInputText(e.target.value)}
-                  onKeyPress={handleKeyPress}
-                  placeholder={inputType === 'phone' ? "Enter phone number..." : "Enter your name..."}
-                  className="flex-1 p-2 border border-sage-200 rounded-full focus:outline-none focus:ring-2 focus:ring-sage-300 text-sm"
-                />
-                <button
-                  onClick={handleInputSubmit}
-                  className="bg-sage-400 hover:bg-sage-500 text-white p-2 rounded-full transition-colors"
-                >
-                  <Send size={16} />
-                </button>
-              </div>
-            </div>
-          )}
         </div>
       )}
     </>
