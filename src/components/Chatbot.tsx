@@ -149,24 +149,36 @@ const Chatbot = () => {
                     <div className="flex justify-center space-x-4">
                       <button
                         onClick={() => handleSocialClick('WhatsApp', 'https://wa.me/9717303190')}
-                        className="w-10 h-10 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center text-white transition-colors"
+                        className="w-10 h-10 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center transition-colors overflow-hidden"
                         title="WhatsApp"
                       >
-                        <span className="text-lg">💬</span>
+                        <img 
+                          src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/whatsapp.svg" 
+                          alt="WhatsApp" 
+                          className="w-6 h-6 filter invert"
+                        />
                       </button>
                       <button
                         onClick={() => handleSocialClick('Messenger', 'https://m.me/YOUR_PAGE')}
-                        className="w-10 h-10 bg-blue-600 hover:bg-blue-700 rounded-full flex items-center justify-center text-white transition-colors"
+                        className="w-10 h-10 bg-blue-600 hover:bg-blue-700 rounded-full flex items-center justify-center transition-colors overflow-hidden"
                         title="Messenger"
                       >
-                        <span className="text-lg">📧</span>
+                        <img 
+                          src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/messenger.svg" 
+                          alt="Messenger" 
+                          className="w-6 h-6 filter invert"
+                        />
                       </button>
                       <button
                         onClick={() => handleSocialClick('WeChat', 'YOUR_WECHAT_LINK')}
-                        className="w-10 h-10 bg-green-600 hover:bg-green-700 rounded-full flex items-center justify-center text-white transition-colors"
+                        className="w-10 h-10 bg-green-600 hover:bg-green-700 rounded-full flex items-center justify-center transition-colors overflow-hidden"
                         title="WeChat"
                       >
-                        <span className="text-lg">💭</span>
+                        <img 
+                          src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/wechat.svg" 
+                          alt="WeChat" 
+                          className="w-6 h-6 filter invert"
+                        />
                       </button>
                     </div>
                     <div className="flex justify-center mt-3">
@@ -185,24 +197,36 @@ const Chatbot = () => {
                   <div className="flex justify-center space-x-4 mt-2">
                     <button
                       onClick={() => window.open('https://www.instagram.com/ankitsharmaofficial', '_blank')}
-                      className="w-10 h-10 bg-pink-500 hover:bg-pink-600 rounded-full flex items-center justify-center text-white transition-colors"
+                      className="w-10 h-10 bg-pink-500 hover:bg-pink-600 rounded-full flex items-center justify-center transition-colors overflow-hidden"
                       title="Instagram"
                     >
-                      <span className="text-lg">📸</span>
+                      <img 
+                        src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" 
+                        alt="Instagram" 
+                        className="w-6 h-6 filter invert"
+                      />
                     </button>
                     <button
                       onClick={() => window.open('https://www.linkedin.com/in/ankitsharmaofficial', '_blank')}
-                      className="w-10 h-10 bg-blue-700 hover:bg-blue-800 rounded-full flex items-center justify-center text-white transition-colors"
+                      className="w-10 h-10 bg-blue-700 hover:bg-blue-800 rounded-full flex items-center justify-center transition-colors overflow-hidden"
                       title="LinkedIn"
                     >
-                      <span className="text-lg">💼</span>
+                      <img 
+                        src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" 
+                        alt="LinkedIn" 
+                        className="w-6 h-6 filter invert"
+                      />
                     </button>
                     <button
                       onClick={() => window.open('https://www.youtube.com/@ankitsharmaofficial', '_blank')}
-                      className="w-10 h-10 bg-red-600 hover:bg-red-700 rounded-full flex items-center justify-center text-white transition-colors"
+                      className="w-10 h-10 bg-red-600 hover:bg-red-700 rounded-full flex items-center justify-center transition-colors overflow-hidden"
                       title="YouTube"
                     >
-                      <span className="text-lg">📺</span>
+                      <img 
+                        src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/youtube.svg" 
+                        alt="YouTube" 
+                        className="w-6 h-6 filter invert"
+                      />
                     </button>
                   </div>
                 )}
