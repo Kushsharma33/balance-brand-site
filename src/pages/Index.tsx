@@ -7,6 +7,7 @@ import Schedule from '../components/Schedule';
 import Pricing from '../components/Pricing';
 import Testimonials from '../components/Testimonials';
 import Footer from '../components/Footer';
+import Chatbot from '../components/Chatbot';
 
 const Index = () => {
   return (
@@ -19,6 +20,7 @@ const Index = () => {
       <Pricing />
       <Testimonials />
       <Footer />
+      <Chatbot />
     </div>
   );
 };
