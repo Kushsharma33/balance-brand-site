@@ -7,6 +7,13 @@ interface Message {
   text: string;
   isUser: boolean;
   timestamp: Date;
+  buttons?: string[];
+}
+
+interface UserInfo {
+  countryCode: string;
+  phone: string;
+  name: string;
 }
 
 const Chatbot = () => {
@@ -14,48 +21,113 @@ const Chatbot = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
-      text: "Hi! I'm Kush, your yoga assistant. How can I help you today?",
+      text: "🌿 Namaste! I'm Sis Kush — your personal yoga assistant.\nLet's get started 🌞 How would you like to proceed?",
       isUser: false,
-      timestamp: new Date()
+      timestamp: new Date(),
+      buttons: ["Share My Info", "Learn About Yoga Services", "Connect on WhatsApp/Messenger/WeChat"]
     }
   ]);
   const [inputText, setInputText] = useState('');
+  const [currentFlow, setCurrentFlow] = useState<string>('main');
+  const [userInfo, setUserInfo] = useState<UserInfo>({ countryCode: '', phone: '', name: '' });
+  const [showInput, setShowInput] = useState(false);
+  const [inputType, setInputType] = useState<'phone' | 'name' | null>(null);
 
-  const getKushResponse = (userMessage: string): string => {
-    const message = userMessage.toLowerCase();
-    
-    if (message.includes('class') || message.includes('schedule')) {
-      return "I'd be happy to help you with our class schedule! We offer various yoga styles throughout the week including Morning Flow, Power Yoga, Vinyasa, and Restorative classes. Check our schedule section to see all available times.";
+  const handleButtonClick = (buttonText: string) => {
+    // Add user message
+    const userMessage: Message = {
+      id: messages.length + 1,
+      text: buttonText,
+      isUser: true,
+      timestamp: new Date()
+    };
+
+    let botResponse: Message;
+
+    if (currentFlow === 'main') {
+      if (buttonText === "Share My Info") {
+        setCurrentFlow('contact-country');
+        botResponse = {
+          id: messages.length + 2,
+          text: "Please select your country code:",
+          isUser: false,
+          timestamp: new Date(),
+          buttons: ["+91", "+1", "+44", "Other"]
+        };
+      } else if (buttonText === "Learn About Yoga Services") {
+        setCurrentFlow('services');
+        botResponse = {
+          id: messages.length + 2,
+          text: "🧘 What would you like to explore?",
+          isUser: false,
+          timestamp: new Date(),
+          buttons: ["Yoga for Beginners", "Weight Loss Yoga", "Back Pain Relief Yoga", "Online Yoga Sessions", "Timings & Pricing"]
+        };
+      } else if (buttonText === "Connect on WhatsApp/Messenger/WeChat") {
+        setCurrentFlow('connect');
+        botResponse = {
+          id: messages.length + 2,
+          text: "📲 You can reach us directly here:\n\n• WhatsApp: https://wa.me/9717303190\n• Messenger: https://m.me/YOUR_PAGE\n• WeChat ID: your_wechat_id\n\nFeel free to chat there for faster help 🌟",
+          isUser: false,
+          timestamp: new Date(),
+          buttons: ["Back to Main Menu"]
+        };
+      }
+    } else if (currentFlow === 'contact-country') {
+      setUserInfo(prev => ({ ...prev, countryCode: buttonText }));
+      setCurrentFlow('contact-phone');
+      setShowInput(true);
+      setInputType('phone');
+      botResponse = {
+        id: messages.length + 2,
+        text: "Please enter your phone number:",
+        isUser: false,
+        timestamp: new Date()
+      };
+    } else if (currentFlow === 'services') {
+      setCurrentFlow('main');
+      let serviceResponse = "";
+      
+      switch (buttonText) {
+        case "Yoga for Beginners":
+          serviceResponse = "Perfect choice! Beginner yoga mai hum basic poses aur breathing techniques sikhate hain. Step by step progress karte hain, bilkul gentle approach.";
+          break;
+        case "Weight Loss Yoga":
+          serviceResponse = "Excellent! Weight loss yoga combines dynamic flows with cardio elements. Fat burn karne ke saath flexibility bhi improve hoti hai!";
+          break;
+        case "Back Pain Relief Yoga":
+          serviceResponse = "Great choice! Back pain relief yoga focuses on gentle stretches and breathing to release pressure. We offer online + offline options too.";
+          break;
+        case "Online Yoga Sessions":
+          serviceResponse = "Wonderful! Online sessions ki convenience with live interaction. Ghar baithe personalized guidance milti hai with flexible timings.";
+          break;
+        case "Timings & Pricing":
+          serviceResponse = "Perfect! We have morning (6-8 AM) and evening (6-8 PM) slots. Pricing starts from ₹1500/month. Package deals bhi available hain!";
+          break;
+      }
+      
+      botResponse = {
+        id: messages.length + 2,
+        text: serviceResponse,
+        isUser: false,
+        timestamp: new Date(),
+        buttons: ["Learn More Services", "Share My Info", "Back to Main Menu"]
+      };
+    } else if (buttonText === "Back to Main Menu" || buttonText === "Learn More Services") {
+      setCurrentFlow('main');
+      botResponse = {
+        id: messages.length + 2,
+        text: "🌿 How would you like to proceed?",
+        isUser: false,
+        timestamp: new Date(),
+        buttons: ["Share My Info", "Learn About Yoga Services", "Connect on WhatsApp/Messenger/WeChat"]
+      };
     }
-    
-    if (message.includes('book') || message.includes('reserve')) {
-      return "To book a class, simply click the 'Book Now' button next to any class in our schedule. It will open our booking form where you can reserve your spot.";
-    }
-    
-    if (message.includes('price') || message.includes('cost') || message.includes('membership')) {
-      return "We offer flexible pricing options including drop-in rates, class packages, and monthly memberships. Check our pricing section for detailed information about all our plans.";
-    }
-    
-    if (message.includes('beginner') || message.includes('new') || message.includes('start')) {
-      return "Welcome to yoga! We have several beginner-friendly classes like Gentle Flow and Restorative Yoga. I recommend starting with our 'All Levels' classes where Sarah provides modifications for everyone.";
-    }
-    
-    if (message.includes('instructor') || message.includes('teacher') || message.includes('sarah')) {
-      return "Sarah is our experienced yoga instructor who leads all our classes. She's passionate about creating a welcoming space for practitioners of all levels and specializes in mindful movement and ancient wisdom.";
-    }
-    
-    if (message.includes('location') || message.includes('address') || message.includes('where')) {
-      return "Our peaceful studio is located at a serene location perfect for your yoga practice. You can find our contact information in the footer section of the website.";
-    }
-    
-    if (message.includes('hello') || message.includes('hi') || message.includes('hey')) {
-      return "Hello! Namaste 🙏 I'm here to help you with any questions about our yoga classes, schedules, or studio. What would you like to know?";
-    }
-    
-    return "I'm here to help with any questions about our yoga classes, schedules, pricing, or studio. Feel free to ask me anything about your yoga journey!";
+
+    setMessages(prev => [...prev, userMessage, botResponse!]);
   };
 
-  const handleSendMessage = () => {
+  const handleInputSubmit = () => {
     if (!inputText.trim()) return;
 
     const userMessage: Message = {
@@ -65,20 +137,39 @@ const Chatbot = () => {
       timestamp: new Date()
     };
 
-    const botResponse: Message = {
-      id: messages.length + 2,
-      text: getKushResponse(inputText),
-      isUser: false,
-      timestamp: new Date()
-    };
+    let botResponse: Message;
 
-    setMessages(prev => [...prev, userMessage, botResponse]);
+    if (currentFlow === 'contact-phone' && inputType === 'phone') {
+      setUserInfo(prev => ({ ...prev, phone: inputText }));
+      setCurrentFlow('contact-name');
+      setInputType('name');
+      botResponse = {
+        id: messages.length + 2,
+        text: "Please enter your full name:",
+        isUser: false,
+        timestamp: new Date()
+      };
+    } else if (currentFlow === 'contact-name' && inputType === 'name') {
+      setUserInfo(prev => ({ ...prev, name: inputText }));
+      setCurrentFlow('main');
+      setShowInput(false);
+      setInputType(null);
+      botResponse = {
+        id: messages.length + 2,
+        text: `Thank you ${inputText}! 🙏 Your details have been saved. Our team will connect with you soon.\n\nHow else can I help you today?`,
+        isUser: false,
+        timestamp: new Date(),
+        buttons: ["Learn About Yoga Services", "Connect on WhatsApp/Messenger/WeChat"]
+      };
+    }
+
+    setMessages(prev => [...prev, userMessage, botResponse!]);
     setInputText('');
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
-      handleSendMessage();
+      handleInputSubmit();
     }
   };
 
@@ -104,7 +195,7 @@ const Chatbot = () => {
                 K
               </div>
               <div>
-                <h3 className="font-medium">Kush</h3>
+                <h3 className="font-medium">Sis Kush</h3>
                 <p className="text-xs opacity-90">Yoga Assistant</p>
               </div>
             </div>
@@ -119,42 +210,60 @@ const Chatbot = () => {
           {/* Messages */}
           <div className="flex-1 p-4 overflow-y-auto space-y-3">
             {messages.map((message) => (
-              <div
-                key={message.id}
-                className={`flex ${message.isUser ? 'justify-end' : 'justify-start'}`}
-              >
+              <div key={message.id} className="space-y-2">
                 <div
-                  className={`max-w-xs p-3 rounded-2xl ${
-                    message.isUser
-                      ? 'bg-sage-400 text-white'
-                      : 'bg-sage-50 text-sage-800 border border-sage-200'
-                  }`}
+                  className={`flex ${message.isUser ? 'justify-end' : 'justify-start'}`}
                 >
-                  <p className="text-sm">{message.text}</p>
+                  <div
+                    className={`max-w-xs p-3 rounded-2xl ${
+                      message.isUser
+                        ? 'bg-sage-400 text-white'
+                        : 'bg-sage-50 text-sage-800 border border-sage-200'
+                    }`}
+                  >
+                    <p className="text-sm whitespace-pre-line">{message.text}</p>
+                  </div>
                 </div>
+                
+                {/* Buttons */}
+                {message.buttons && !message.isUser && (
+                  <div className="flex flex-col space-y-1">
+                    {message.buttons.map((button, index) => (
+                      <button
+                        key={index}
+                        onClick={() => handleButtonClick(button)}
+                        className="bg-sage-100 hover:bg-sage-200 text-sage-800 px-3 py-2 rounded-xl text-sm transition-colors border border-sage-300"
+                      >
+                        👉 {button}
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
             ))}
           </div>
 
           {/* Input */}
-          <div className="p-4 border-t border-sage-100">
-            <div className="flex space-x-2">
-              <input
-                type="text"
-                value={inputText}
-                onChange={(e) => setInputText(e.target.value)}
-                onKeyPress={handleKeyPress}
-                placeholder="Type your message..."
-                className="flex-1 p-2 border border-sage-200 rounded-full focus:outline-none focus:ring-2 focus:ring-sage-300 text-sm"
-              />
-              <button
-                onClick={handleSendMessage}
-                className="bg-sage-400 hover:bg-sage-500 text-white p-2 rounded-full transition-colors"
-              >
-                <Send size={16} />
-              </button>
+          {showInput && (
+            <div className="p-4 border-t border-sage-100">
+              <div className="flex space-x-2">
+                <input
+                  type="text"
+                  value={inputText}
+                  onChange={(e) => setInputText(e.target.value)}
+                  onKeyPress={handleKeyPress}
+                  placeholder={inputType === 'phone' ? "Enter phone number..." : "Enter your name..."}
+                  className="flex-1 p-2 border border-sage-200 rounded-full focus:outline-none focus:ring-2 focus:ring-sage-300 text-sm"
+                />
+                <button
+                  onClick={handleInputSubmit}
+                  className="bg-sage-400 hover:bg-sage-500 text-white p-2 rounded-full transition-colors"
+                >
+                  <Send size={16} />
+                </button>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       )}
     </>
