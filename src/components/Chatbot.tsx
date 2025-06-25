@@ -42,7 +42,7 @@ const Chatbot = () => {
       timestamp: new Date()
     };
 
-    let botResponse: Message;
+    let botResponse: Message | null = null;
 
     if (currentFlow === 'main') {
       if (buttonText === "Share My Info") {
@@ -104,6 +104,8 @@ const Chatbot = () => {
         case "Timings & Pricing":
           serviceResponse = "Perfect! We have morning (6-8 AM) and evening (6-8 PM) slots. Pricing starts from ₹1500/month. Package deals bhi available hain!";
           break;
+        default:
+          serviceResponse = "Thanks for your interest! How else can I help you today?";
       }
       
       botResponse = {
@@ -113,7 +115,21 @@ const Chatbot = () => {
         timestamp: new Date(),
         buttons: ["Learn More Services", "Share My Info", "Back to Main Menu"]
       };
-    } else if (buttonText === "Back to Main Menu" || buttonText === "Learn More Services") {
+    } else if (currentFlow === 'connect') {
+      if (buttonText === "Back to Main Menu") {
+        setCurrentFlow('main');
+        botResponse = {
+          id: messages.length + 2,
+          text: "🌿 How would you like to proceed?",
+          isUser: false,
+          timestamp: new Date(),
+          buttons: ["Share My Info", "Learn About Yoga Services", "Connect on WhatsApp/Messenger/WeChat"]
+        };
+      }
+    }
+
+    // Handle "Back to Main Menu" and "Learn More Services" from any flow
+    if (buttonText === "Back to Main Menu" || buttonText === "Learn More Services") {
       setCurrentFlow('main');
       botResponse = {
         id: messages.length + 2,
@@ -124,7 +140,12 @@ const Chatbot = () => {
       };
     }
 
-    setMessages(prev => [...prev, userMessage, botResponse!]);
+    // Only add messages if botResponse is not null
+    if (botResponse) {
+      setMessages(prev => [...prev, userMessage, botResponse]);
+    } else {
+      setMessages(prev => [...prev, userMessage]);
+    }
   };
 
   const handleInputSubmit = () => {
@@ -137,7 +158,7 @@ const Chatbot = () => {
       timestamp: new Date()
     };
 
-    let botResponse: Message;
+    let botResponse: Message | null = null;
 
     if (currentFlow === 'contact-phone' && inputType === 'phone') {
       setUserInfo(prev => ({ ...prev, phone: inputText }));
@@ -163,7 +184,12 @@ const Chatbot = () => {
       };
     }
 
-    setMessages(prev => [...prev, userMessage, botResponse!]);
+    // Only add messages if botResponse is not null
+    if (botResponse) {
+      setMessages(prev => [...prev, userMessage, botResponse]);
+    } else {
+      setMessages(prev => [...prev, userMessage]);
+    }
     setInputText('');
   };
 
@@ -209,7 +235,7 @@ const Chatbot = () => {
 
           {/* Messages */}
           <div className="flex-1 p-4 overflow-y-auto space-y-3">
-            {messages.map((message) => (
+            {messages.filter(message => message && typeof message === 'object').map((message) => (
               <div key={message.id} className="space-y-2">
                 <div
                   className={`flex ${message.isUser ? 'justify-end' : 'justify-start'}`}
