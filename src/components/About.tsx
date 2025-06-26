@@ -25,6 +25,39 @@ const About = () => {
                 <span className="block text-coral-400">Your Wellness Guide</span>
               </h2>
               
+              {/* Video Introduction Section */}
+              <div className="bg-white rounded-2xl p-6 shadow-lg border border-sage-100">
+                <div className="flex items-center gap-2 mb-4">
+                  <span className="text-2xl">🎥</span>
+                  <h3 className="text-xl font-light text-sage-800">Meet Your Instructor</h3>
+                </div>
+                
+                <div className="relative rounded-xl overflow-hidden shadow-md mb-4">
+                  <iframe
+                    src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                    title="Meet Ankit Sharma - Your Yoga Instructor"
+                    className="w-full h-48 md:h-56"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+                
+                <p className="text-sage-600 text-sm italic text-center mb-4">
+                  "Namaste, I'm Ankit Sharma, a certified yoga teacher with 5+ years experience. 
+                  I help people like you find balance and strength through mindful yoga practices..."
+                </p>
+                
+                <div className="text-center">
+                  <button 
+                    className="bg-coral-400 hover:bg-coral-500 text-white px-6 py-3 rounded-full font-medium transition-all duration-300 hover:scale-105 shadow-md"
+                    onClick={() => window.open('https://forms.gle/YOUR_GOOGLE_FORM_LINK', '_blank')}
+                  >
+                    Book a Session
+                  </button>
+                </div>
+              </div>
+              
               <div className="space-y-4 text-sage-600 text-lg leading-relaxed">
                 <p>
                   For over 5 years, I've been passionate about helping people discover the 
