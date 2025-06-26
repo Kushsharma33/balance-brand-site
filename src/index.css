@@ -78,18 +78,61 @@
   }
 }
 
+/* Universal mobile-friendly layout rules */
 @layer base {
-  * {
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  *, *::before, *::after {
     @apply border-border;
+    box-sizing: border-box;
   }
 
   body {
     @apply bg-background text-foreground font-light;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-normal;
+  }
+
+  /* Responsive media elements */
+  img, iframe, video, embed, object {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Prevent text overflow */
+  h1, h2, h3, h4, h5, h6, p, div, span {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  /* Container constraints */
+  .container {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* Prevent horizontal scroll on all sections */
+  section {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* Ensure root element doesn't overflow */
+  #root {
+    max-width: 100%;
+    overflow-x: hidden;
   }
 }
 
