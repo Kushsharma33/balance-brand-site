@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from 'react';
+import VideoTestimonials from './VideoTestimonials';
 
 const Testimonials = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -69,7 +70,17 @@ const Testimonials = () => {
             </p>
           </div>
 
-          {/* Testimonial Card */}
+          {/* Video Testimonials Section */}
+          <VideoTestimonials />
+
+          {/* Divider */}
+          <div className="flex items-center justify-center mb-16">
+            <div className="h-px bg-sage-200 flex-1"></div>
+            <div className="px-6 text-sage-400 text-sm">Written Reviews</div>
+            <div className="h-px bg-sage-200 flex-1"></div>
+          </div>
+
+          {/* Text Testimonial Card */}
           <div className="relative">
             <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 text-center">
               <div className="mb-6">
