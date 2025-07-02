@@ -1,4 +1,3 @@
-
 const About = () => {
   return (
     <section id="about" className="py-20 bg-cream-50">
@@ -8,7 +7,7 @@ const About = () => {
           <div className="text-center mb-12">
             <div className="text-coral-400 text-sm uppercase tracking-wider mb-4">About Me</div>
             <h2 className="text-4xl md:text-5xl font-light text-sage-800 leading-tight mb-8">
-              Hi, I'm Sarah
+              Hi, I'm Ankit
               <span className="block text-coral-400">Your Wellness Guide</span>
             </h2>
           </div>
