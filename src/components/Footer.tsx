@@ -9,7 +9,7 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {/* Brand */}
             <div className="col-span-1 md:col-span-2">
-              <div className="text-3xl font-light mb-4">Serenity</div>
+              <div className="text-3xl font-light mb-4">VEDYO</div>
               <p className="text-sage-200 leading-relaxed mb-6 max-w-md">
                 Your sanctuary for mindful movement, inner peace, and holistic wellness. 
                 Join our community and discover the transformative power of yoga.
@@ -42,7 +42,7 @@ const Footer = () => {
             <div>
               <h4 className="font-medium mb-4">Get in Touch</h4>
               <div className="space-y-2 text-sage-200">
-                <p>📧 hello@serenityoga.com</p>
+                <p>📧 hello@vedyo.com</p>
                 <p>📞 (555) 123-4567</p>
                 <p>📍 123 Wellness Way<br />Peaceful City, PC 12345</p>
               </div>
@@ -89,7 +89,7 @@ const Footer = () => {
 
           {/* Bottom */}
           <div className="border-t border-sage-700 mt-8 pt-8 text-center text-sage-300">
-            <p>&copy; {currentYear} Serenity Yoga Studio. All rights reserved.</p>
+            <p>&copy; {currentYear} VEDYO Yoga Studio. All rights reserved.</p>
             <p className="mt-2">Designed with 💚 for wellness and peace</p>
           </div>
         </div>
