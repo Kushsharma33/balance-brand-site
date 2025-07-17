@@ -19,8 +19,15 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="text-2xl font-light text-sage-700">
-            VEDYO
+          <div className="flex items-center space-x-3">
+            <img 
+              src="/lovable-uploads/732fd980-5da7-40c1-8fa0-8582473bb192.png" 
+              alt="VEDYO Logo" 
+              className="h-10 w-auto"
+            />
+            <div className="text-2xl font-light text-grey-800">
+              VEDYO
+            </div>
           </div>
 
           {/* Desktop Navigation */}
@@ -29,16 +36,16 @@ const Header = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-sage-600 hover:text-sage-800 transition-colors duration-300 relative group"
+                className="text-grey-700 hover:text-lightgreen-600 transition-colors duration-300 relative group"
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-coral-300 transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-saffron-400 transition-all duration-300 group-hover:w-full"></span>
               </a>
             ))}
           </nav>
 
           {/* CTA Button */}
-          <Button className="hidden md:block bg-sage-400 hover:bg-sage-500 text-white px-6 py-2 rounded-full transition-all duration-300">
+          <Button className="hidden md:block bg-lightgreen-500 hover:bg-lightgreen-600 text-white px-6 py-2 rounded-full transition-all duration-300">
             Book Class
           </Button>
 
@@ -48,9 +55,9 @@ const Header = () => {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             <div className="w-6 h-6 flex flex-col justify-center space-y-1">
-              <div className={`w-full h-0.5 bg-sage-600 transition-all ${isMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></div>
-              <div className={`w-full h-0.5 bg-sage-600 transition-all ${isMenuOpen ? 'opacity-0' : ''}`}></div>
-              <div className={`w-full h-0.5 bg-sage-600 transition-all ${isMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></div>
+              <div className={`w-full h-0.5 bg-grey-700 transition-all ${isMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></div>
+              <div className={`w-full h-0.5 bg-grey-700 transition-all ${isMenuOpen ? 'opacity-0' : ''}`}></div>
+              <div className={`w-full h-0.5 bg-grey-700 transition-all ${isMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></div>
             </div>
           </button>
         </div>
@@ -62,13 +69,13 @@ const Header = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="block py-2 text-sage-600 hover:text-sage-800 transition-colors"
+                className="block py-2 text-grey-700 hover:text-lightgreen-600 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}
               </a>
             ))}
-            <Button className="mt-4 w-full bg-sage-400 hover:bg-sage-500 text-white rounded-full">
+            <Button className="mt-4 w-full bg-lightgreen-500 hover:bg-lightgreen-600 text-white rounded-full">
               Book Class
             </Button>
           </nav>

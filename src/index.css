@@ -7,73 +7,73 @@
 
 @layer base {
   :root {
-    --background: 250 252 247;
-    --foreground: 45 55 40;
+    --background: 46 41 33;
+    --foreground: 74 69 60;
 
-    --card: 250 247 240;
-    --card-foreground: 45 55 40;
+    --card: 244 242 236;
+    --card-foreground: 74 69 60;
 
-    --popover: 250 247 240;
-    --popover-foreground: 45 55 40;
+    --popover: 244 242 236;
+    --popover-foreground: 74 69 60;
 
-    --primary: 135 169 107;
-    --primary-foreground: 250 247 240;
+    --primary: 159 184 120;
+    --primary-foreground: 244 242 236;
 
-    --secondary: 233 240 228;
-    --secondary-foreground: 45 55 40;
+    --secondary: 244 242 236;
+    --secondary-foreground: 74 69 60;
 
-    --muted: 246 248 244;
-    --muted-foreground: 107 142 81;
+    --muted: 241 238 231;
+    --muted-foreground: 122 140 103;
 
-    --accent: 244 164 167;
-    --accent-foreground: 45 55 40;
+    --accent: 236 152 42;
+    --accent-foreground: 74 69 60;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 213 227 204;
-    --input: 213 227 204;
-    --ring: 135 169 107;
+    --border: 228 224 214;
+    --input: 228 224 214;
+    --ring: 159 184 120;
 
     --radius: 0.75rem;
 
-    --sidebar-background: 250 247 240;
-    --sidebar-foreground: 45 55 40;
-    --sidebar-primary: 135 169 107;
-    --sidebar-primary-foreground: 250 247 240;
-    --sidebar-accent: 246 248 244;
-    --sidebar-accent-foreground: 45 55 40;
-    --sidebar-border: 213 227 204;
-    --sidebar-ring: 135 169 107;
+    --sidebar-background: 244 242 236;
+    --sidebar-foreground: 74 69 60;
+    --sidebar-primary: 159 184 120;
+    --sidebar-primary-foreground: 244 242 236;
+    --sidebar-accent: 241 238 231;
+    --sidebar-accent-foreground: 74 69 60;
+    --sidebar-border: 228 224 214;
+    --sidebar-ring: 159 184 120;
   }
 
   .dark {
-    --background: 45 55 40;
-    --foreground: 250 247 240;
-    --card: 47 61 42;
-    --card-foreground: 250 247 240;
-    --popover: 47 61 42;
-    --popover-foreground: 250 247 240;
+    --background: 74 69 60;
+    --foreground: 244 242 236;
+    --card: 86 80 69;
+    --card-foreground: 244 242 236;
+    --popover: 86 80 69;
+    --popover-foreground: 244 242 236;
     --primary: 179 198 155;
-    --primary-foreground: 45 55 40;
-    --secondary: 66 89 52;
-    --secondary-foreground: 250 247 240;
-    --muted: 55 73 45;
+    --primary-foreground: 74 69 60;
+    --secondary: 102 94 82;
+    --secondary-foreground: 244 242 236;
+    --muted: 94 87 76;
     --muted-foreground: 179 198 155;
-    --accent: 244 164 167;
-    --accent-foreground: 45 55 40;
+    --accent: 236 152 42;
+    --accent-foreground: 74 69 60;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-    --border: 55 73 45;
-    --input: 55 73 45;
+    --border: 94 87 76;
+    --input: 94 87 76;
     --ring: 179 198 155;
-    --sidebar-background: 45 55 40;
-    --sidebar-foreground: 246 248 244;
+    --sidebar-background: 74 69 60;
+    --sidebar-foreground: 244 242 236;
     --sidebar-primary: 179 198 155;
-    --sidebar-primary-foreground: 45 55 40;
-    --sidebar-accent: 55 73 45;
-    --sidebar-accent-foreground: 246 248 244;
-    --sidebar-border: 55 73 45;
+    --sidebar-primary-foreground: 74 69 60;
+    --sidebar-accent: 94 87 76;
+    --sidebar-accent-foreground: 244 242 236;
+    --sidebar-border: 94 87 76;
     --sidebar-ring: 179 198 155;
   }
 }
@@ -138,16 +138,16 @@
 
 @layer components {
   .gradient-bg {
-    background: linear-gradient(135deg, theme('colors.sage.100') 0%, theme('colors.coral.50') 50%, theme('colors.cream.50') 100%);
+    background: linear-gradient(135deg, theme('colors.beige.100') 0%, theme('colors.saffron.50') 50%, theme('colors.lightgreen.50') 100%);
   }
   
   .wellness-gradient {
-    background: linear-gradient(120deg, theme('colors.sage.400') 0%, theme('colors.coral.300') 100%);
+    background: linear-gradient(120deg, theme('colors.lightgreen.400') 0%, theme('colors.saffron.300') 100%);
   }
   
   .glass-effect {
     backdrop-filter: blur(10px);
-    background: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(244, 242, 236, 0.9);
+    border: 1px solid rgba(244, 242, 236, 0.3);
   }
 }
