@@ -1,22 +1,22 @@
 
 const About = () => {
   return (
-    <section id="about" className="py-20 bg-beige-50">
+    <section id="about" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
-            <div className="text-saffron-500 text-sm uppercase tracking-wider mb-4">About Me</div>
-            <h2 className="text-4xl md:text-5xl font-light text-grey-800 leading-tight mb-8">
+            <div className="text-primary text-sm uppercase tracking-wider mb-4">About Me</div>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground leading-tight mb-8">
               Hi, I'm Ankit
-              <span className="block text-saffron-500">Your Wellness Guide</span>
+              <span className="block text-primary">Your Wellness Guide</span>
             </h2>
           </div>
 
           {/* Video Introduction Section */}
-          <div className="bg-white rounded-3xl p-8 shadow-lg border border-beige-200 mb-12">
+          <div className="bg-card rounded-3xl p-8 shadow-lg border mb-12">
             <div className="text-center mb-6">
-              <h3 className="text-2xl font-light text-grey-800 flex items-center justify-center gap-2">
+              <h3 className="text-2xl font-semibold text-card-foreground flex items-center justify-center gap-2">
                 <span className="text-2xl">🎥</span>
                 Meet Your Instructor
               </h3>
@@ -35,7 +35,7 @@ const About = () => {
             
             <div className="text-center">
               <button 
-                className="bg-saffron-500 hover:bg-saffron-600 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 hover:scale-105 shadow-md inline-flex items-center gap-2"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 rounded-full font-medium transition-all duration-300 hover:scale-105 shadow-md inline-flex items-center gap-2"
                 onClick={() => window.open('https://forms.gle/YOUR_GOOGLE_FORM_LINK', '_blank')}
               >
                 <span>👉</span>
@@ -46,7 +46,7 @@ const About = () => {
           
           {/* Content */}
           <div className="space-y-6 text-center max-w-3xl mx-auto">
-            <div className="space-y-4 text-grey-700 text-lg leading-relaxed">
+            <div className="space-y-4 text-muted-foreground text-lg leading-relaxed">
               <p>
                 For over 5 years, I've been passionate about helping people discover the 
                 transformative power of yoga and mindful movement. My journey began during 
@@ -64,17 +64,17 @@ const About = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8 max-w-2xl mx-auto">
-              <div className="bg-lightgreen-50 rounded-2xl p-6">
-                <h4 className="font-medium text-grey-800 mb-3 text-center">Certifications</h4>
-                <ul className="text-grey-700 space-y-2 text-center">
+              <div className="bg-muted rounded-2xl p-6">
+                <h4 className="font-semibold text-foreground mb-3 text-center">Certifications</h4>
+                <ul className="text-muted-foreground space-y-2 text-center">
                   <li>• 200hr RYT Certified</li>
                   <li>• Meditation Teacher</li>
                   <li>• Wellness Coach</li>
                 </ul>
               </div>
-              <div className="bg-lightgreen-50 rounded-2xl p-6">
-                <h4 className="font-medium text-grey-800 mb-3 text-center">Specialties</h4>
-                <ul className="text-grey-700 space-y-2 text-center">
+              <div className="bg-muted rounded-2xl p-6">
+                <h4 className="font-semibold text-foreground mb-3 text-center">Specialties</h4>
+                <ul className="text-muted-foreground space-y-2 text-center">
                   <li>• Vinyasa Flow</li>
                   <li>• Restorative Yoga</li>
                   <li>• Mindfulness</li>
