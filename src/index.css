@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,83 +6,83 @@
 
 @layer base {
   :root {
-    --background: 44 20% 94%;  /* Light beige */
-    --foreground: 0 0% 25%;    /* Dark grey */
+    --background: 60 50% 98%;  /* Very light cream */
+    --foreground: 120 15% 25%;    /* Dark sage */
 
-    --card: 44 25% 96%;        /* Very light beige */
-    --card-foreground: 0 0% 25%; /* Dark grey */
+    --card: 45 45% 96%;        /* Light peach tint */
+    --card-foreground: 120 15% 25%; /* Dark sage */
 
-    --popover: 44 25% 96%;     /* Very light beige */
-    --popover-foreground: 0 0% 25%; /* Dark grey */
+    --popover: 45 45% 96%;     /* Light peach tint */
+    --popover-foreground: 120 15% 25%; /* Dark sage */
 
-    --primary: 79 38% 64%;     /* Light green */
-    --primary-foreground: 44 25% 96%; /* Light beige */
+    --primary: 120 35% 75%;     /* Soft sage green (A3DC9A) */
+    --primary-foreground: 60 50% 98%; /* Light cream */
 
-    --secondary: 41 86% 70%;   /* Saffron */
-    --secondary-foreground: 0 0% 25%; /* Dark grey */
+    --secondary: 25 60% 85%;   /* Peach/salmon (FFD6BA) */
+    --secondary-foreground: 120 15% 25%; /* Dark sage */
 
-    --muted: 0 0% 85%;         /* Light grey */
-    --muted-foreground: 0 0% 45%; /* Medium grey */
+    --muted: 60 40% 90%;         /* Light cream/ivory */
+    --muted-foreground: 120 10% 45%; /* Medium sage */
 
-    --accent: 41 86% 70%;      /* Saffron */
-    --accent-foreground: 0 0% 25%; /* Dark grey */
+    --accent: 65 55% 80%;      /* Light lime (DEE791) */
+    --accent-foreground: 120 15% 25%; /* Dark sage */
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 44 25% 96%;
+    --destructive-foreground: 60 50% 98%;
 
-    --border: 0 0% 75%;        /* Medium grey */
-    --input: 0 0% 75%;         /* Medium grey */
-    --ring: 79 38% 64%;        /* Light green */
+    --border: 120 20% 80%;        /* Light sage */
+    --input: 120 20% 80%;         /* Light sage */
+    --ring: 120 35% 75%;        /* Soft sage green */
 
     --radius: 0.5rem;
 
-    --sidebar-background: 44 25% 96%; /* Very light beige */
-    --sidebar-foreground: 0 0% 25%; /* Dark grey */
-    --sidebar-primary: 79 38% 64%; /* Light green */
-    --sidebar-primary-foreground: 44 25% 96%; /* Light beige */
-    --sidebar-accent: 41 86% 70%; /* Saffron */
-    --sidebar-accent-foreground: 0 0% 25%; /* Dark grey */
-    --sidebar-border: 0 0% 75%; /* Medium grey */
-    --sidebar-ring: 79 38% 64%; /* Light green */
+    --sidebar-background: 45 45% 96%; /* Light peach tint */
+    --sidebar-foreground: 120 15% 25%; /* Dark sage */
+    --sidebar-primary: 120 35% 75%; /* Soft sage green */
+    --sidebar-primary-foreground: 60 50% 98%; /* Light cream */
+    --sidebar-accent: 65 55% 80%; /* Light lime */
+    --sidebar-accent-foreground: 120 15% 25%; /* Dark sage */
+    --sidebar-border: 120 20% 80%; /* Light sage */
+    --sidebar-ring: 120 35% 75%; /* Soft sage green */
   }
 
   .dark {
-    --background: 0 0% 15%;    /* Dark grey */
-    --foreground: 44 20% 94%; /* Light beige */
+    --background: 120 15% 12%;    /* Very dark sage */
+    --foreground: 60 50% 95%; /* Light cream */
 
-    --card: 0 0% 18%;         /* Darker grey */
-    --card-foreground: 44 20% 94%; /* Light beige */
+    --card: 120 20% 15%;         /* Dark sage */
+    --card-foreground: 60 50% 95%; /* Light cream */
 
-    --popover: 0 0% 18%;      /* Darker grey */
-    --popover-foreground: 44 20% 94%; /* Light beige */
+    --popover: 120 20% 15%;      /* Dark sage */
+    --popover-foreground: 60 50% 95%; /* Light cream */
 
-    --primary: 79 38% 64%;    /* Light green */
-    --primary-foreground: 0 0% 15%; /* Dark grey */
+    --primary: 120 35% 75%;    /* Soft sage green */
+    --primary-foreground: 120 15% 12%; /* Very dark sage */
 
-    --secondary: 41 86% 70%;  /* Saffron */
-    --secondary-foreground: 0 0% 15%; /* Dark grey */
+    --secondary: 25 60% 75%;  /* Peach/salmon */
+    --secondary-foreground: 120 15% 12%; /* Very dark sage */
 
-    --muted: 0 0% 25%;        /* Dark grey */
-    --muted-foreground: 0 0% 65%; /* Light grey */
+    --muted: 120 10% 20%;        /* Dark sage */
+    --muted-foreground: 60 30% 70%; /* Light sage */
 
-    --accent: 41 86% 70%;     /* Saffron */
-    --accent-foreground: 0 0% 15%; /* Dark grey */
+    --accent: 65 55% 70%;     /* Light lime */
+    --accent-foreground: 120 15% 12%; /* Very dark sage */
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 44 20% 94%;
+    --destructive-foreground: 60 50% 95%;
 
-    --border: 0 0% 25%;       /* Dark grey */
-    --input: 0 0% 25%;        /* Dark grey */
-    --ring: 79 38% 64%;       /* Light green */
+    --border: 120 15% 25%;       /* Dark sage */
+    --input: 120 15% 25%;        /* Dark sage */
+    --ring: 120 35% 75%;       /* Soft sage green */
 
-    --sidebar-background: 0 0% 15%; /* Dark grey */
-    --sidebar-foreground: 44 20% 94%; /* Light beige */
-    --sidebar-primary: 79 38% 64%; /* Light green */
-    --sidebar-primary-foreground: 0 0% 15%; /* Dark grey */
-    --sidebar-accent: 41 86% 70%; /* Saffron */
-    --sidebar-accent-foreground: 0 0% 15%; /* Dark grey */
-    --sidebar-border: 0 0% 25%; /* Dark grey */
-    --sidebar-ring: 79 38% 64%; /* Light green */
+    --sidebar-background: 120 15% 12%; /* Very dark sage */
+    --sidebar-foreground: 60 50% 95%; /* Light cream */
+    --sidebar-primary: 120 35% 75%; /* Soft sage green */
+    --sidebar-primary-foreground: 120 15% 12%; /* Very dark sage */
+    --sidebar-accent: 65 55% 70%; /* Light lime */
+    --sidebar-accent-foreground: 120 15% 12%; /* Very dark sage */
+    --sidebar-border: 120 15% 25%; /* Dark sage */
+    --sidebar-ring: 120 35% 75%; /* Soft sage green */
   }
 }
 
