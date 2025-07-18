@@ -3,56 +3,82 @@ import { Button } from './ui/button';
 
 const Hero = () => {
   return (
-    <section id="home" className="min-h-screen flex items-center gradient-bg relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute top-20 left-10 w-32 h-32 bg-primary/10 rounded-full opacity-50 animate-float"></div>
-      <div className="absolute bottom-32 right-16 w-24 h-24 bg-accent/20 rounded-full opacity-60 animate-gentle-bounce"></div>
-      <div className="absolute top-1/3 right-1/4 w-16 h-16 bg-muted rounded-full opacity-40 animate-float delay-1000"></div>
-
-      <div className="container mx-auto px-4 py-32">
-        <div className="max-w-4xl mx-auto text-center animate-fade-in">
-          <h1 className="text-5xl md:text-7xl font-bold text-foreground mb-6 leading-tight">
-            Find Your
-            <span className="block wellness-gradient bg-clip-text text-transparent">
-              Inner Balance
-            </span>
-          </h1>
-          
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-            Transform your mind, body, and spirit through mindful movement and ancient wisdom. 
-            Join our community of wellness seekers.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button 
-              size="lg" 
-              className="px-8 py-4 text-lg transition-all duration-300 hover:scale-105 shadow-lg"
-            >
-              Start Your Journey
-            </Button>
-            <Button 
-              variant="outline" 
-              size="lg"
-              className="px-8 py-4 text-lg transition-all duration-300"
-            >
-              View Schedule
-            </Button>
-          </div>
-          
-          <div className="mt-16 text-muted-foreground">
-            <p className="text-sm uppercase tracking-wider mb-4">Trusted by 500+ Students</p>
-            <div className="flex justify-center space-x-8">
-              <div className="text-center">
-                <div className="text-2xl font-bold text-foreground">5+</div>
-                <div className="text-sm">Years Experience</div>
+    <section id="home" className="min-h-screen flex items-center bg-background relative overflow-hidden">
+      {/* Subtle background elements */}
+      <div className="absolute inset-0 bg-gradient-to-br from-sage-50/50 to-cream-50/30"></div>
+      
+      <div className="container mx-auto px-6 py-20">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Content */}
+            <div className="space-y-8">
+              <div className="space-y-6">
+                <div className="inline-block">
+                  <span className="px-4 py-2 bg-sage-100 text-sage-700 rounded-full text-sm font-medium tracking-wide">
+                    MINDFUL WELLNESS
+                  </span>
+                </div>
+                
+                <h1 className="text-5xl lg:text-7xl font-light leading-tight text-foreground">
+                  Find Your
+                  <span className="block font-normal text-sage-600 mt-2">
+                    Inner Balance
+                  </span>
+                </h1>
+                
+                <p className="text-xl text-muted-foreground leading-relaxed max-w-lg">
+                  Experience transformative yoga practice designed for modern life. 
+                  Join our community of mindful practitioners.
+                </p>
               </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-foreground">20+</div>
-                <div className="text-sm">Classes Weekly</div>
+              
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button 
+                  size="lg" 
+                  className="px-8 py-4 bg-sage-600 hover:bg-sage-700 text-white rounded-full font-medium transition-all duration-300"
+                >
+                  Start Your Journey
+                </Button>
+                <Button 
+                  variant="outline" 
+                  size="lg"
+                  className="px-8 py-4 border-sage-300 text-sage-700 hover:bg-sage-50 rounded-full font-medium transition-all duration-300"
+                >
+                  Explore Classes
+                </Button>
               </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-foreground">500+</div>
-                <div className="text-sm">Happy Students</div>
+              
+              <div className="flex items-center space-x-8 pt-8">
+                <div className="flex items-center space-x-3">
+                  <div className="w-12 h-12 bg-sage-100 rounded-full flex items-center justify-center">
+                    <span className="text-2xl font-light text-sage-600">5+</span>
+                  </div>
+                  <div>
+                    <div className="text-sm text-muted-foreground">Years</div>
+                    <div className="text-sm font-medium text-foreground">Experience</div>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <div className="w-12 h-12 bg-sage-100 rounded-full flex items-center justify-center">
+                    <span className="text-2xl font-light text-sage-600">500+</span>
+                  </div>
+                  <div>
+                    <div className="text-sm text-muted-foreground">Happy</div>
+                    <div className="text-sm font-medium text-foreground">Students</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Visual Element */}
+            <div className="relative">
+              <div className="aspect-square bg-gradient-to-br from-sage-200 to-cream-200 rounded-3xl relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-sage-300/20 to-cream-300/20"></div>
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                  <div className="w-32 h-32 bg-white/80 rounded-full flex items-center justify-center backdrop-blur-sm">
+                    <span className="text-4xl">🧘‍♀️</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

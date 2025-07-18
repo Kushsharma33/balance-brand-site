@@ -8,86 +8,71 @@ const Classes = () => {
     {
       id: 1,
       name: 'Vinyasa Flow',
-      description: 'Dynamic sequences linking breath and movement',
+      description: 'Dynamic sequences linking breath and movement for strength and flexibility',
       duration: '60 mins',
       level: 'All Levels',
       icon: '🌊',
-      color: 'sage'
     },
     {
       id: 2,
       name: 'Restorative Yoga',
-      description: 'Gentle poses with props for deep relaxation',
+      description: 'Gentle poses with props for deep relaxation and stress relief',
       duration: '75 mins',
       level: 'Beginner',
       icon: '🕯️',
-      color: 'coral'
     },
     {
       id: 3,
       name: 'Power Yoga',
-      description: 'Strength-building athletic yoga practice',
+      description: 'Strength-building athletic practice for fitness enthusiasts',
       duration: '45 mins',
       level: 'Intermediate',
       icon: '💪',
-      color: 'cream'
     },
     {
       id: 4,
       name: 'Meditation',
-      description: 'Mindfulness and breathing techniques',
+      description: 'Mindfulness techniques for mental clarity and peace',
       duration: '30 mins',
       level: 'All Levels',
       icon: '🧘‍♀️',
-      color: 'sage'
     },
     {
       id: 5,
       name: 'Yin Yoga',
-      description: 'Deep stretching with long-held poses',
+      description: 'Deep stretching with long-held poses for flexibility',
       duration: '90 mins',
       level: 'All Levels',
       icon: '🌙',
-      color: 'coral'
     },
     {
       id: 6,
       name: 'Prenatal Yoga',
-      description: 'Safe practice for expecting mothers',
+      description: 'Safe and nurturing practice for expecting mothers',
       duration: '60 mins',
       level: 'Beginner',
       icon: '🤱',
-      color: 'cream'
     }
   ];
 
-  const getCardStyles = (color: string, isHovered: boolean) => {
-    const baseStyles = "p-6 rounded-2xl transition-all duration-300 cursor-pointer border";
-    const hoverTransform = isHovered ? "scale-105 shadow-xl" : "shadow-lg";
-    
-    switch (color) {
-      case 'sage':
-        return `${baseStyles} bg-sage-50 border-sage-200 hover:bg-sage-100 ${hoverTransform}`;
-      case 'coral':
-        return `${baseStyles} bg-coral-50 border-coral-200 hover:bg-coral-100 ${hoverTransform}`;
-      case 'cream':
-        return `${baseStyles} bg-cream-50 border-cream-200 hover:bg-cream-100 ${hoverTransform}`;
-      default:
-        return `${baseStyles} bg-white border-gray-200 hover:bg-gray-50 ${hoverTransform}`;
-    }
-  };
-
   return (
-    <section id="classes" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
+    <section id="classes" className="py-24 bg-sage-25">
+      <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-16">
-            <div className="text-coral-400 text-sm uppercase tracking-wider mb-4">Our Classes</div>
-            <h2 className="text-4xl md:text-5xl font-light text-sage-800 mb-6">
-              Discover Your Perfect Practice
+          <div className="text-center mb-16 space-y-6">
+            <div className="inline-block">
+              <span className="px-4 py-2 bg-sage-100 text-sage-700 rounded-full text-sm font-medium tracking-wide">
+                OUR CLASSES
+              </span>
+            </div>
+            
+            <h2 className="text-4xl lg:text-5xl font-light leading-tight text-foreground">
+              Discover Your
+              <span className="block text-sage-600 mt-2">Perfect Practice</span>
             </h2>
-            <p className="text-xl text-sage-600 max-w-2xl mx-auto">
+            
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
               From energizing flows to restorative healing, find the class that speaks to your soul
             </p>
           </div>
@@ -97,24 +82,33 @@ const Classes = () => {
             {classes.map((classItem) => (
               <div
                 key={classItem.id}
-                className={getCardStyles(classItem.color, hoveredClass === classItem.id)}
+                className={`group p-8 bg-white rounded-2xl border border-sage-100 transition-all duration-300 cursor-pointer ${
+                  hoveredClass === classItem.id 
+                    ? 'shadow-xl scale-105 border-sage-200' 
+                    : 'shadow-sm hover:shadow-lg'
+                }`}
                 onMouseEnter={() => setHoveredClass(classItem.id)}
                 onMouseLeave={() => setHoveredClass(null)}
               >
-                <div className="text-center">
-                  <div className="text-4xl mb-4">{classItem.icon}</div>
-                  <h3 className="text-xl font-medium text-sage-800 mb-3">
-                    {classItem.name}
-                  </h3>
-                  <p className="text-sage-600 mb-4 leading-relaxed">
-                    {classItem.description}
-                  </p>
+                <div className="space-y-4">
+                  <div className="w-16 h-16 bg-sage-100 rounded-2xl flex items-center justify-center text-2xl group-hover:bg-sage-200 transition-colors">
+                    {classItem.icon}
+                  </div>
                   
-                  <div className="flex justify-between items-center text-sm">
-                    <span className="bg-white px-3 py-1 rounded-full text-sage-700 border border-sage-200">
+                  <div className="space-y-2">
+                    <h3 className="text-xl font-medium text-foreground">
+                      {classItem.name}
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {classItem.description}
+                    </p>
+                  </div>
+                  
+                  <div className="flex justify-between items-center pt-4 border-t border-sage-100">
+                    <span className="px-3 py-1 bg-sage-50 text-sage-700 rounded-full text-sm font-medium">
                       {classItem.duration}
                     </span>
-                    <span className="text-sage-500">
+                    <span className="text-sm text-muted-foreground">
                       {classItem.level}
                     </span>
                   </div>
@@ -125,12 +119,9 @@ const Classes = () => {
 
           {/* CTA */}
           <div className="text-center mt-16">
-            <div className="inline-flex items-center space-x-4">
-              <span className="text-sage-600">Ready to begin?</span>
-              <button className="bg-sage-400 hover:bg-sage-500 text-white px-6 py-3 rounded-full transition-all duration-300 hover:scale-105">
-                View Full Schedule
-              </button>
-            </div>
+            <button className="bg-sage-600 hover:bg-sage-700 text-white px-8 py-4 rounded-full font-medium transition-all duration-300 hover:scale-105">
+              View Full Schedule
+            </button>
           </div>
         </div>
       </div>

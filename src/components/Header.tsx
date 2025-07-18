@@ -15,17 +15,17 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-0 w-full z-50 glass-effect">
-      <div className="container mx-auto px-4 py-4">
+    <header className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-sage-100">
+      <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-3">
             <img 
               src="/lovable-uploads/732fd980-5da7-40c1-8fa0-8582473bb192.png" 
               alt="VEDYO Logo" 
-              className="h-10 w-auto"
+              className="h-8 w-auto"
             />
-            <div className="text-2xl font-bold text-primary">
+            <div className="text-xl font-medium text-foreground">
               VEDYO
             </div>
           </div>
@@ -36,22 +36,22 @@ const Header = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-foreground hover:text-primary transition-colors duration-300 relative group"
+                className="text-muted-foreground hover:text-foreground transition-colors duration-300 relative group font-medium"
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-sage-600 transition-all duration-300 group-hover:w-full"></span>
               </a>
             ))}
           </nav>
 
           {/* CTA Button */}
-          <Button className="hidden md:block">
+          <Button className="hidden md:block bg-sage-600 hover:bg-sage-700 text-white px-6 py-2 rounded-full font-medium">
             Book Class
           </Button>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden"
+            className="md:hidden p-2"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             <div className="w-6 h-6 flex flex-col justify-center space-y-1">
@@ -64,20 +64,22 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <nav className="md:hidden mt-4 pb-4">
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="block py-2 text-foreground hover:text-primary transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item.name}
-              </a>
-            ))}
-            <Button className="mt-4 w-full">
-              Book Class
-            </Button>
+          <nav className="md:hidden mt-6 pb-6 border-t border-sage-100 pt-6">
+            <div className="space-y-4">
+              {navItems.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="block text-muted-foreground hover:text-foreground transition-colors font-medium"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.name}
+                </a>
+              ))}
+              <Button className="w-full mt-6 bg-sage-600 hover:bg-sage-700 text-white py-3 rounded-full font-medium">
+                Book Class
+              </Button>
+            </div>
           </nav>
         )}
       </div>
