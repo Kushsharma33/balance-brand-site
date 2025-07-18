@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,83 +7,83 @@
 
 @layer base {
   :root {
-    --background: 48 20% 97%;  /* Very soft warm white */
-    --foreground: 120 8% 20%;    /* Muted dark sage */
+    --background: 45 15% 97%;  /* Very soft warm beige */
+    --foreground: 25 8% 25%;    /* Warm dark brown */
 
-    --card: 48 15% 95%;        /* Soft warm off-white */
-    --card-foreground: 120 8% 20%; /* Muted dark sage */
+    --card: 45 12% 95%;        /* Soft warm off-white */
+    --card-foreground: 25 8% 25%; /* Warm dark brown */
 
-    --popover: 48 15% 95%;     /* Soft warm off-white */
-    --popover-foreground: 120 8% 20%; /* Muted dark sage */
+    --popover: 45 12% 95%;     /* Soft warm off-white */
+    --popover-foreground: 25 8% 25%; /* Warm dark brown */
 
-    --primary: 120 20% 65%;     /* Muted sage green */
-    --primary-foreground: 48 20% 97%; /* Very soft warm white */
+    --primary: 35 25% 75%;     /* Soft warm beige/tan */
+    --primary-foreground: 25 8% 25%; /* Warm dark brown */
 
-    --secondary: 25 25% 75%;   /* Soft peach */
-    --secondary-foreground: 120 8% 20%; /* Muted dark sage */
+    --secondary: 15 20% 85%;   /* Soft peachy beige */
+    --secondary-foreground: 25 8% 25%; /* Warm dark brown */
 
-    --muted: 48 12% 92%;         /* Very light warm grey */
-    --muted-foreground: 120 6% 45%; /* Medium muted sage */
+    --muted: 45 10% 92%;         /* Very light warm grey */
+    --muted-foreground: 25 6% 45%; /* Medium warm brown */
 
-    --accent: 65 18% 72%;      /* Muted lime */
-    --accent-foreground: 120 8% 20%; /* Muted dark sage */
+    --accent: 50 20% 80%;      /* Soft cream */
+    --accent-foreground: 25 8% 25%; /* Warm dark brown */
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 48 20% 97%;
+    --destructive-foreground: 45 15% 97%;
 
-    --border: 120 10% 85%;        /* Light muted sage */
-    --input: 120 10% 85%;         /* Light muted sage */
-    --ring: 120 20% 65%;        /* Muted sage green */
+    --border: 35 15% 88%;        /* Light warm beige */
+    --input: 35 15% 88%;         /* Light warm beige */
+    --ring: 35 25% 75%;        /* Soft warm beige/tan */
 
     --radius: 0.5rem;
 
-    --sidebar-background: 48 15% 95%; /* Soft warm off-white */
-    --sidebar-foreground: 120 8% 20%; /* Muted dark sage */
-    --sidebar-primary: 120 20% 65%; /* Muted sage green */
-    --sidebar-primary-foreground: 48 20% 97%; /* Very soft warm white */
-    --sidebar-accent: 65 18% 72%; /* Muted lime */
-    --sidebar-accent-foreground: 120 8% 20%; /* Muted dark sage */
-    --sidebar-border: 120 10% 85%; /* Light muted sage */
-    --sidebar-ring: 120 20% 65%; /* Muted sage green */
+    --sidebar-background: 45 12% 95%; /* Soft warm off-white */
+    --sidebar-foreground: 25 8% 25%; /* Warm dark brown */
+    --sidebar-primary: 35 25% 75%; /* Soft warm beige/tan */
+    --sidebar-primary-foreground: 25 8% 25%; /* Warm dark brown */
+    --sidebar-accent: 50 20% 80%; /* Soft cream */
+    --sidebar-accent-foreground: 25 8% 25%; /* Warm dark brown */
+    --sidebar-border: 35 15% 88%; /* Light warm beige */
+    --sidebar-ring: 35 25% 75%; /* Soft warm beige/tan */
   }
 
   .dark {
-    --background: 120 8% 12%;    /* Very dark muted sage */
-    --foreground: 48 15% 90%; /* Soft warm light */
+    --background: 25 8% 12%;    /* Very dark warm brown */
+    --foreground: 45 15% 90%; /* Soft warm light */
 
-    --card: 120 10% 15%;         /* Dark muted sage */
-    --card-foreground: 48 15% 90%; /* Soft warm light */
+    --card: 25 10% 15%;         /* Dark warm brown */
+    --card-foreground: 45 15% 90%; /* Soft warm light */
 
-    --popover: 120 10% 15%;      /* Dark muted sage */
-    --popover-foreground: 48 15% 90%; /* Soft warm light */
+    --popover: 25 10% 15%;      /* Dark warm brown */
+    --popover-foreground: 45 15% 90%; /* Soft warm light */
 
-    --primary: 120 20% 65%;    /* Muted sage green */
-    --primary-foreground: 120 8% 12%; /* Very dark muted sage */
+    --primary: 35 25% 75%;    /* Soft warm beige/tan */
+    --primary-foreground: 25 8% 12%; /* Very dark warm brown */
 
-    --secondary: 25 25% 65%;  /* Muted peach */
-    --secondary-foreground: 120 8% 12%; /* Very dark muted sage */
+    --secondary: 15 20% 65%;  /* Muted peachy beige */
+    --secondary-foreground: 25 8% 12%; /* Very dark warm brown */
 
-    --muted: 120 6% 20%;        /* Dark muted sage */
-    --muted-foreground: 48 10% 70%; /* Light muted warm */
+    --muted: 25 6% 20%;        /* Dark warm brown */
+    --muted-foreground: 45 10% 70%; /* Light muted warm */
 
-    --accent: 65 18% 62%;     /* Muted lime */
-    --accent-foreground: 120 8% 12%; /* Very dark muted sage */
+    --accent: 50 20% 70%;     /* Muted cream */
+    --accent-foreground: 25 8% 12%; /* Very dark warm brown */
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 48 15% 90%;
+    --destructive-foreground: 45 15% 90%;
 
-    --border: 120 8% 25%;       /* Dark muted sage */
-    --input: 120 8% 25%;        /* Dark muted sage */
-    --ring: 120 20% 65%;       /* Muted sage green */
+    --border: 25 8% 25%;       /* Dark warm brown */
+    --input: 25 8% 25%;        /* Dark warm brown */
+    --ring: 35 25% 75%;       /* Soft warm beige/tan */
 
-    --sidebar-background: 120 8% 12%; /* Very dark muted sage */
-    --sidebar-foreground: 48 15% 90%; /* Soft warm light */
-    --sidebar-primary: 120 20% 65%; /* Muted sage green */
-    --sidebar-primary-foreground: 120 8% 12%; /* Very dark muted sage */
-    --sidebar-accent: 65 18% 62%; /* Muted lime */
-    --sidebar-accent-foreground: 120 8% 12%; /* Very dark muted sage */
-    --sidebar-border: 120 8% 25%; /* Dark muted sage */
-    --sidebar-ring: 120 20% 65%; /* Muted sage green */
+    --sidebar-background: 25 8% 12%; /* Very dark warm brown */
+    --sidebar-foreground: 45 15% 90%; /* Soft warm light */
+    --sidebar-primary: 35 25% 75%; /* Soft warm beige/tan */
+    --sidebar-primary-foreground: 25 8% 12%; /* Very dark warm brown */
+    --sidebar-accent: 50 20% 70%; /* Muted cream */
+    --sidebar-accent-foreground: 25 8% 12%; /* Very dark warm brown */
+    --sidebar-border: 25 8% 25%; /* Dark warm brown */
+    --sidebar-ring: 35 25% 75%; /* Soft warm beige/tan */
   }
 }
 
