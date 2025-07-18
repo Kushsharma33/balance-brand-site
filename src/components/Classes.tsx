@@ -46,10 +46,10 @@ const Classes = () => {
       <div className="container mx-auto max-w-6xl">
         {/* Header */}
         <div className="text-center mb-16 space-y-4">
-          <h2 className="text-4xl md:text-5xl font-light text-sage-800">
+          <h2 className="text-4xl md:text-5xl font-light text-foreground">
             Discover Your Perfect Practice
           </h2>
-          <p className="text-xl text-sage-600 max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             From energizing flows to restorative healing, find the class that speaks to your soul
           </p>
         </div>
@@ -59,21 +59,21 @@ const Classes = () => {
           {classes.map((classItem, index) => (
             <div
               key={index}
-              className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+              className="bg-card rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
             >
               <div className="text-center space-y-4">
                 <div className="text-4xl mb-4">{classItem.emoji}</div>
-                <h3 className="text-2xl font-medium text-sage-800">
+                <h3 className="text-2xl font-medium text-card-foreground">
                   {classItem.name}
                 </h3>
-                <p className="text-sage-600 leading-relaxed mb-4">
+                <p className="text-muted-foreground leading-relaxed mb-4">
                   {classItem.description}
                 </p>
-                <div className="text-sm text-sage-500 mb-6">
+                <div className="text-sm text-muted-foreground mb-6">
                   {classItem.duration}
                 </div>
                 <Button 
-                  className="w-full bg-sage-500 hover:bg-sage-600 text-white rounded-full"
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-full"
                 >
                   Join Now
                 </Button>

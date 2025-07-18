@@ -19,16 +19,16 @@ const Benefits = () => {
   ];
 
   return (
-    <section className="py-20 px-6 bg-white/50">
+    <section className="py-20 px-6 bg-muted/30">
       <div className="container mx-auto max-w-6xl">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {benefits.map((benefit, index) => (
             <div key={index} className="text-center space-y-4 p-8">
               <div className="text-6xl mb-4">{benefit.icon}</div>
-              <h3 className="text-2xl font-medium text-sage-800">
+              <h3 className="text-2xl font-medium text-foreground">
                 {benefit.title}
               </h3>
-              <p className="text-sage-600 leading-relaxed">
+              <p className="text-muted-foreground leading-relaxed">
                 {benefit.description}
               </p>
             </div>
