@@ -25,7 +25,7 @@ const Header = () => {
               alt="VEDYO Logo" 
               className="h-8 w-auto"
             />
-            <div className="text-xl font-medium text-foreground">
+            <div className="text-xl font-medium text-sage-800">
               VEDYO
             </div>
           </div>
@@ -36,7 +36,7 @@ const Header = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-muted-foreground hover:text-foreground transition-colors duration-300 relative group font-medium"
+                className="text-sage-600 hover:text-sage-800 transition-colors duration-300 relative group font-medium"
               >
                 {item.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-sage-600 transition-all duration-300 group-hover:w-full"></span>
@@ -45,7 +45,7 @@ const Header = () => {
           </nav>
 
           {/* CTA Button */}
-          <Button className="hidden md:block bg-sage-600 hover:bg-sage-700 text-white px-6 py-2 rounded-full font-medium">
+          <Button className="hidden md:block bg-sage-500 hover:bg-sage-600 text-white px-6 py-2 rounded-full font-medium">
             Book Class
           </Button>
 
@@ -55,9 +55,9 @@ const Header = () => {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             <div className="w-6 h-6 flex flex-col justify-center space-y-1">
-              <div className={`w-full h-0.5 bg-foreground transition-all ${isMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></div>
-              <div className={`w-full h-0.5 bg-foreground transition-all ${isMenuOpen ? 'opacity-0' : ''}`}></div>
-              <div className={`w-full h-0.5 bg-foreground transition-all ${isMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></div>
+              <div className={`w-full h-0.5 bg-sage-800 transition-all ${isMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></div>
+              <div className={`w-full h-0.5 bg-sage-800 transition-all ${isMenuOpen ? 'opacity-0' : ''}`}></div>
+              <div className={`w-full h-0.5 bg-sage-800 transition-all ${isMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></div>
             </div>
           </button>
         </div>
@@ -70,13 +70,13 @@ const Header = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="block text-muted-foreground hover:text-foreground transition-colors font-medium"
+                  className="block text-sage-600 hover:text-sage-800 transition-colors font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
                 </a>
               ))}
-              <Button className="w-full mt-6 bg-sage-600 hover:bg-sage-700 text-white py-3 rounded-full font-medium">
+              <Button className="w-full mt-6 bg-sage-500 hover:bg-sage-600 text-white py-3 rounded-full font-medium">
                 Book Class
               </Button>
             </div>
