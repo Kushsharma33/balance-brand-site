@@ -14,7 +14,8 @@ const Pricing = () => {
         'Mat rental included',
         'Community access'
       ],
-      popular: false
+      popular: false,
+      bgColor: 'bg-card'
     },
     {
       name: 'Monthly Unlimited',
@@ -28,7 +29,8 @@ const Pricing = () => {
         'Workshop discounts',
         'Community events'
       ],
-      popular: true
+      popular: true,
+      bgColor: 'bg-primary'
     },
     {
       name: '10-Class Pack',
@@ -42,19 +44,20 @@ const Pricing = () => {
         'Transferable',
         'Mat rental included'
       ],
-      popular: false
+      popular: false,
+      bgColor: 'bg-card'
     }
   ];
 
   return (
-    <section className="py-20 px-6">
+    <section className="py-24 px-6 bg-card">
       <div className="container mx-auto max-w-6xl">
         {/* Header */}
-        <div className="text-center mb-16 space-y-4">
-          <h2 className="text-4xl md:text-5xl font-light text-foreground">
+        <div className="text-center mb-20 space-y-6">
+          <h2 className="text-5xl md:text-6xl font-serif font-light text-foreground leading-tight">
             Choose Your Journey
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto font-light leading-relaxed">
             Flexible options to support your wellness practice, whatever your schedule
           </p>
         </div>
@@ -64,42 +67,42 @@ const Pricing = () => {
           {plans.map((plan, index) => (
             <div 
               key={index} 
-              className={`relative p-8 rounded-3xl border-2 transition-all duration-300 hover:scale-105 ${
+              className={`relative p-10 rounded-3xl border-2 transition-all duration-300 hover:scale-105 ${
                 plan.popular 
-                  ? 'bg-primary border-primary text-primary-foreground shadow-2xl transform scale-105' 
-                  : 'bg-card border-border hover:border-primary/50 shadow-lg'
+                  ? `${plan.bgColor} border-primary text-primary-foreground soft-shadow transform scale-105` 
+                  : `${plan.bgColor} border-border hover:border-primary/50 gentle-shadow`
               }`}
             >
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-secondary text-secondary-foreground px-6 py-2 rounded-full text-sm font-medium">
+                  <span className="bg-accent text-accent-foreground px-6 py-2 rounded-full text-sm font-medium shadow-md">
                     Most Popular
                   </span>
                 </div>
               )}
               
-              <div className="text-center mb-8">
-                <h3 className={`text-2xl font-medium mb-2 ${plan.popular ? 'text-primary-foreground' : 'text-card-foreground'}`}>
+              <div className="text-center mb-10">
+                <h3 className={`text-2xl font-serif font-medium mb-4 ${plan.popular ? 'text-primary-foreground' : 'text-card-foreground'}`}>
                   {plan.name}
                 </h3>
-                <div className="mb-4">
-                  <span className={`text-4xl font-light ${plan.popular ? 'text-primary-foreground' : 'text-card-foreground'}`}>
+                <div className="mb-6">
+                  <span className={`text-5xl font-serif font-light ${plan.popular ? 'text-primary-foreground' : 'text-card-foreground'}`}>
                     {plan.price}
                   </span>
-                  <span className={`text-lg ${plan.popular ? 'text-primary-foreground/80' : 'text-muted-foreground'} ml-2`}>
+                  <span className={`text-lg font-light ${plan.popular ? 'text-primary-foreground/80' : 'text-muted-foreground'} ml-2`}>
                     {plan.period}
                   </span>
                 </div>
-                <p className={`${plan.popular ? 'text-primary-foreground/80' : 'text-muted-foreground'} leading-relaxed`}>
+                <p className={`${plan.popular ? 'text-primary-foreground/80' : 'text-muted-foreground'} leading-relaxed font-light`}>
                   {plan.description}
                 </p>
               </div>
 
-              <div className="space-y-4 mb-8">
+              <div className="space-y-4 mb-10">
                 {plan.features.map((feature, featureIndex) => (
                   <div key={featureIndex} className="flex items-center">
-                    <div className={`w-2 h-2 rounded-full mr-3 ${plan.popular ? 'bg-primary-foreground/60' : 'bg-muted-foreground'}`}></div>
-                    <span className={`${plan.popular ? 'text-primary-foreground/90' : 'text-card-foreground'}`}>
+                    <div className={`w-2 h-2 rounded-full mr-4 ${plan.popular ? 'bg-primary-foreground/60' : 'bg-primary'}`}></div>
+                    <span className={`font-light ${plan.popular ? 'text-primary-foreground/90' : 'text-card-foreground'}`}>
                       {feature}
                     </span>
                   </div>
@@ -107,7 +110,7 @@ const Pricing = () => {
               </div>
 
               <Button 
-                className={`w-full py-3 rounded-full font-medium transition-all duration-300 ${
+                className={`w-full py-4 rounded-full font-medium transition-all duration-300 shadow-md hover:shadow-lg ${
                   plan.popular 
                     ? 'bg-background text-foreground hover:bg-background/90' 
                     : 'bg-primary hover:bg-primary/90 text-primary-foreground'
